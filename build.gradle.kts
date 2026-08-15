@@ -28,9 +28,9 @@ publishing {
     publications {
         create<MavenPublication>("publish") {
             from(components["java"])
-            groupId = project.group.toString()
-            artifactId = project.name
-            version = project.version.toString()
+            groupId = "com.github.37hulk37"
+            artifactId = "sharazan-${project.name}"
+            version = "main-SNAPSHOT"
         }
     }
 
