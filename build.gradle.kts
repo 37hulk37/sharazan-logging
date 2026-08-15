@@ -6,6 +6,14 @@ plugins {
 group = "com.sharazan"
 version = "1.0-SNAPSHOT"
 
+val gitVersion: String = try {
+    providers.exec {
+        commandLine("git", "describe", "--tags", "--abbrev=0")
+    }.standardOutput.asText.get().trim()
+} catch (e: Exception) {
+    "0.0.0-dev"
+}
+
 repositories {
     mavenCentral()
     mavenLocal()
@@ -30,7 +38,7 @@ publishing {
             from(components["java"])
             groupId = "com.github.37hulk37"
             artifactId = "sharazan-${project.name}"
-            version = "1.0.0"
+            version = gitVersion
         }
     }
 
