@@ -10,7 +10,7 @@ val gitVersion: String = try {
     providers.exec {
         commandLine("git", "describe", "--tags", "--abbrev=0")
     }.standardOutput.asText.get().trim()
-} catch (e: Exception) {
+} catch (_: Exception) {
     "0.0.0-dev"
 }
 
